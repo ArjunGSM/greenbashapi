@@ -20,7 +20,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 app.get('/navbardata', async (req, res) => {
     const data = await db('navbar')
-    res.status(200).json({ engtitle: data[0].engtitle, arbtitle: data[0].arbtitle, logo: data[0].logo });
+    res.status(200).json({ engtitle: data[data.length - 1].engtitle, arbtitle: data[data.length - 1].arbtitle, logo: data[data.length - 1].logo });
 })
 
 app.get('/homeslider', async (req, res) => {
@@ -46,6 +46,11 @@ app.get('/homegallery', async (req, res) => {
 app.get('/locations', async (req, res) => {
     const data = await db('ourlocations')
     res.status(200).json(data)
+})
+
+app.get('/whychooseus', async (req, res) => {
+    const data = await db('whychooseus')
+    res.status(200).json(data[data.length - 1])
 })
 
 app.listen(process.env.PORT, () => { console.log(`Listening on port ${process.env.PORT}`) });
