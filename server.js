@@ -10,10 +10,8 @@ app.use(bodyParser.json());
 const db = knex({
     client: 'pg',
     connection: {
-        host: 'ec2-52-20-248-222.compute-1.amazonaws.com',
-        user: 'catellsuzmzqym',
-        password: '7d03cfbca05d377f94d10126eac565c7fae45a24b9abb6d0b73f8de0c23a470a',
-        database: 'ddl8roket54euk'
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
     }
 })
 
@@ -45,4 +43,4 @@ app.get('/homegallery', async (req, res) => {
     res.status(200).json(data)
 })
 
-app.listen(3001, () => { console.log("Listening on port 3001") });
+app.listen(process.env.PORT, () => { console.log(`Listening on port ${process.env.PORT}`) });
