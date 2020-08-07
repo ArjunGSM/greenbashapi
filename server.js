@@ -53,4 +53,9 @@ app.get('/whychooseus', async (req, res) => {
     res.status(200).json(data[data.length - 1])
 })
 
+app.get('/ourpartners', async (req, res) => {
+    const data = await db('ourpartners')
+    res.status(200).json(data)
+})
+
 app.listen(process.env.PORT, () => { console.log(`Listening on port ${process.env.PORT}`) });
