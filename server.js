@@ -39,7 +39,12 @@ app.get('/hometeam', async (req, res) => {
 })
 
 app.get('/homegallery', async (req, res) => {
-    const data = await db('gallery');
+    const data = await db('gallery')
+    res.status(200).json(data)
+})
+
+app.get('/locations', async (req, res) => {
+    const data = await db('ourlocations')
     res.status(200).json(data)
 })
 
