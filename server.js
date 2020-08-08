@@ -34,7 +34,7 @@ app.get('/homeorderonline', async (req, res) => {
 })
 
 app.get('/hometeam', async (req, res) => {
-    const data = await db('team')
+    const data = await db('team').orderBy('arrid')
     res.status(200).json(data)
 })
 
