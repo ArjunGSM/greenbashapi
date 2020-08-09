@@ -63,4 +63,9 @@ app.get('/ourfutureplans', async (req, res) => {
     res.status(200).json(data)
 })
 
-app.listen(process.env.PORT, () => { console.log(`Listening on port ${process.env.PORT}`) });
+app.get('/cartinfo/:target', async (req, res) => {
+    const data = await db('cart').where('cart_name', req.params.target)
+    res.status(200).json(data)
+})
+
+app.listen(3001 , () => { console.log(`Listening on port ${process.env.PORT}`) });
